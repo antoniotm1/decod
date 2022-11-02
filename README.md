@@ -1,0 +1,2 @@
+# decod
+decodificador de senhas
