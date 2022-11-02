@@ -35,6 +35,28 @@ void Intruso::set_senha_vazada(std::string senha_vazada){
 		}
 		_senhas_organizadas.push_back(temp.str());
 	}
+
+
+    for(std::vector<std::string>::iterator a = _senhas_organizadas.begin(); a != _senhas_organizadas.end() - 1; a++){
+		for(std::vector<std::string>::iterator b = _senhas_organizadas.begin() + 1; b != _senhas_organizadas.end(); b++){
+			int aux = 0;
+			for(int k = 0; k < 6; k++){
+				for(int i = 2*aux; i < 2*aux + 2; i++){
+					for(int j = 2*aux; j < 2*aux + 2; j++){
+						if(a->at(i) == b->at(j)){
+					        _senha_crackeada << a->at(i) << " ";
+						}
+					}
+				}
+			    aux++;
+			}
+		}
+	}
+	
+    for(int i = _senha_crackeada.str().size() - 12; i < _senha_crackeada.str().size(); i++)
+        _senha_final << _senha_crackeada.str().at(i);
+	
+	return _senha_final.str();
 	
 	
 
